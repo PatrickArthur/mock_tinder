@@ -7,7 +7,8 @@ class Like < ApplicationRecord
   def viewed_photo_check_conversation
     ViewedPhoto.create(user_id: user.id, picture_id: picture.id)
     if self.like_object
-      Conversation.find_or_create_by(sender: user, recipient: picture.user)
+      con = Conversation.between(user.id, picture.user.id)
+      Conversation.create(sender: user, recipient: picture.user) unless con.present?
     end
   end
 end
