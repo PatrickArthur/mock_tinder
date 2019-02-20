@@ -20,7 +20,7 @@ class Conversation < ActiveRecord::Base
     conversations.map {|x| {sender: x.sender,
                             recipient: x.recipient,
                             url: "/conversations/#{x.id}",
-                            message_count: x.messages.where(read: true).count
+                            message_count: x.messages.where(read: false).count
                           }
                       }
   end
@@ -30,7 +30,7 @@ class Conversation < ActiveRecord::Base
       sender: sender.email,
       recipient: recipient.email,
       messages: messages.map {|x| {user: x.user.email, body: x.body}},
-      message_count: messages.where(read: true).count
+      message_count: messages.where(read: false).count
     }
   end
 end

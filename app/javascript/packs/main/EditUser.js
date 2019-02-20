@@ -38,7 +38,7 @@ class EditUser extends React.Component {
     }
 
     axios(options)
-      .then(response => this.setState({picture: response.data}))
+      .then(response => this.setState({user: response.data}))
       .then(
         this.setState({ images: [] }),
         document.querySelector('#images').value = ""
