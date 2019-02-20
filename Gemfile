@@ -39,8 +39,7 @@ gem 'devise'
 
 #carrierwave for file uploads
 gem 'carrierwave', '~> 1.2.1'
-gem 'fog', group: :production
-gem 'figaro'
+gem 'fog-aws', group: :production
 
 #mini_magick
 gem 'mini_magick' , '3.7.0'
@@ -57,10 +56,9 @@ gem 'jquery-rails'
 # sidekiq for rails
 gem 'sidekiq'
 
-gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot'
   gem 'dotenv-rails'
