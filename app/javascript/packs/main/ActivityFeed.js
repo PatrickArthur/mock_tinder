@@ -29,19 +29,32 @@ class ActivityFeed extends React.Component {
         <div className="container">
           <div className="row text-center">
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h4>Activity Feed</h4>
+              <h2>Activity Feed</h2>
             </div>
-            { Object.keys(feed).length == 0 ?
+            { feed == null ?
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <h1>No Photos Voted</h1>
+                <h4>No Photos Voted</h4>
               </div>
             :
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                {feed.map((item, index) => (
-                  <div>
-                    {item.votes.map((vote, index) => <li> <img src={vote.picture.file.url} width="50" height="50"/> {vote.email} - {vote.time}</li>)}
-                  </div>
-                ))}
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>User</th>
+                      <th>Voted At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {feed.map(item => (
+                      <tr>
+                        <td><img src={item.picture.file.url} width="50" height="50"/></td>
+                        <td>{item.email}</td>
+                        <td>{item.time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             }
           </div>

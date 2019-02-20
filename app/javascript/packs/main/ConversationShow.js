@@ -36,7 +36,7 @@ class ConversationShow extends React.Component {
     axios(options)
       .then(response => this.setState({conversation: response.data}))
       .then(
-        document.querySelector('#images').value = ""
+        document.querySelector('#message').value = ""
       )
       .catch(this._apiError)
   }
@@ -66,7 +66,7 @@ class ConversationShow extends React.Component {
               :
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   {conversation.messages.map(message => (
-                    <p>{message.user}: {message.body}</p>
+                    <p>{message.user}: {message.body} {message.time}</p>
                   ))}
                 </div>
               }

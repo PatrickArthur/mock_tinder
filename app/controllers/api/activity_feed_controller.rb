@@ -4,8 +4,12 @@ module Api
 
     def index
       @user = User.find(params[:user_id])
-      @voted_pics = @user.pictures.map {|x| {votes: x.votes.map { |z| {picture: x, email: z.user.email, time: z.user.created_at.strftime("voted %m/%d/%Y at %I:%M%p")}}}}.select {|n| !n[:votes].empty?}
-      json_response(@voted_pics, :ok)
+      @voted_pics = @user.pictures.votes_json
+      if @voted_pics.first.nil? || @voted_pics.empty?
+        json_response(nil, :ok)
+      else
+        json_response(@voted_pics, :ok)
+      end
     end
   end
 end

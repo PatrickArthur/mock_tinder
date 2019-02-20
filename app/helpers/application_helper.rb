@@ -6,9 +6,13 @@ module ApplicationHelper
       json_response(not_viewed.first, :created)
     else
       user = User.all_except(current_user, photo.user)
-      not_viewed = user.pictures - current_user.viewed_pictures
-      if not_viewed.present?
-        json_response(not_viewed.first, :created)
+      if user
+        not_viewed = user.pictures - current_user.viewed_pictures
+        if not_viewed.present?
+          json_response(not_viewed.first, :created)
+        else
+          json_response(nil, :ok)
+        end
       else
         json_response(nil, :ok)
       end

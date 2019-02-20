@@ -29,7 +29,7 @@ class Conversation < ActiveRecord::Base
     {
       sender: sender.email,
       recipient: recipient.email,
-      messages: messages.map {|x| {user: x.user.email, body: x.body}},
+      messages: messages.map {|x| {user: x.user.email, body: x.body, time: x.created_at.strftime("%m/%d/%Y at %I:%M%p")}},
       message_count: messages.where(read: false).count
     }
   end

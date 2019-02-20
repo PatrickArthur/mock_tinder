@@ -14,4 +14,17 @@ class Picture < ApplicationRecord
     not_viewed = pictures - user.viewed_pictures
     not_viewed.sample
   end
+
+  def self.votes_json
+    array = []
+    votes = all.map {|x| x.votes}.flatten
+    votes.each do |vote|
+      hash = {}
+      hash[:picture] = vote.picture
+      hash[:email] = vote.user.email
+      hash[:time] = vote.created_at.strftime("%m/%d/%Y at %I:%M%p")
+      array << hash
+    end
+    array.sort_by { |hsh| hsh[:time] }
+  end
 end

@@ -87,7 +87,7 @@ class EditUser extends React.Component {
                 {user["pictures"].map(pic => (
                   <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     {pic.map(image => (
-                      <img src={image["file"]["url"]} width="200" height="200"/>
+                      <img src={image.file.url} width="200" height="200"/>
                     ))}
                   </div>
                 ))}

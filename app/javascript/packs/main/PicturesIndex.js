@@ -80,8 +80,8 @@ class PicturesIndex extends React.Component {
                 </div>
                 <br/>
                 <br/>
-                <img src={picture["file"]["url"]} width="460" height="460"/>
-                <input type="hidden" id="photo_id" name="photo_id" value={picture["id"]}/>
+                <img src={picture.file.url} width="460" height="460"/>
+                <input type="hidden" id="photo_id" name="photo_id" value={picture.id}/>
               </div>
             }
           </div>
