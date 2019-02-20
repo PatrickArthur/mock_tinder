@@ -39,7 +39,7 @@ class ActivityFeed extends React.Component {
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 {feed.map((item, index) => (
                   <ul>
-                    {item.votes.map((vote, index) =><li><img src={vote.picture.file.url} width="50" height="50"/> --------- {vote.email} - {vote.time}</li>)}
+                    {item.votes.map((vote, index) => <li> {vote.email} - {vote.time} <img src={vote.picture.file.url} width="50" height="50"/></li>)}
                   </ul>
                 ))}
               </div>
