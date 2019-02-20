@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MockTinder</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'app' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">MockTinder</a>
+        <% if user_signed_in? %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <%= link_to " Edit",  edit_user_path(current_user), :class => 'nav-item nav-link active' , method: :get%>
+              <%= link_to " Pictures",  pictures_path, :class => 'nav-item nav-link' , method: :get%>
+              <%= link_to " Conversations",  user_conversations_path(current_user), :class => 'nav-item nav-link' , method: :get%>
+              <%= link_to " Activity Feed",  user_activity_feed_index_path(current_user), :class => 'nav-item nav-link' , method: :get%>
+            </div>
+        </div>
+        <% end %>
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <% else %>
+          <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+        <% end %>
+      </nav>
+    <%= yield %>
+  </body>
+</html>
