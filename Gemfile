@@ -40,6 +40,7 @@ gem 'devise'
 #carrierwave for file uploads
 gem 'carrierwave', '~> 1.2.1'
 gem 'fog-aws', group: :production
+gem 'figaro'
 
 #mini_magick
 gem 'mini_magick' , '3.7.0'
