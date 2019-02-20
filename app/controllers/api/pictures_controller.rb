@@ -9,7 +9,6 @@ module Api
 
     def create
       pictures = []
-      byebug
       if params[:uploads].present?
         params[:uploads].each do |upload|
           picture = Picture.new(user_id: params[:user_id], file: upload)
