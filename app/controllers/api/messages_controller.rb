@@ -1,6 +1,7 @@
 module Api
   class MessagesController < BaseController
     before_action :authenticate_user!
+
     def create
       @message = Message.new(user_id: current_user.id,
                              conversation_id: params[:conversation_id],

@@ -1,5 +1,7 @@
 module Api
   class ConversationsController < BaseController
+    before_action :authenticate_user!
+
     def index
       @conversations = Conversation.find_json(params[:user_id])
       json_response(@conversations, :created)
