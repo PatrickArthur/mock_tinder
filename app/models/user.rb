@@ -17,8 +17,4 @@ class User < ApplicationRecord
   def disliked
     likes.where(like_object: false)
   end
-
-  def self.all_except(current_user, photo_user)
-    where.not(id: [current_user, photo_user]).joins(:pictures).sample
-  end
 end

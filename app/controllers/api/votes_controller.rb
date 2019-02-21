@@ -7,7 +7,7 @@ module Api
                           picture_id: params[:picture_id],
                           vote: true)
 
-      vote_likes_process(@vote.picture)
+      vote_likes_process
     end
   end
 end
