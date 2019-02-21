@@ -4,7 +4,6 @@ class CreatePictures < ActiveRecord::Migration[5.2]
       t.string :file
       t.text :description
       t.references :user
-      t.datetime :viewed_at, default: nil
     end
   end
 end
