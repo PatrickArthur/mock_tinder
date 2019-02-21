@@ -1,13 +1,13 @@
 module ApplicationHelper
   def vote_likes_process(photo)
-    not_viewed = photo.user.pictures - current_user.viewed_pictures
+    not_viewed = photo.user.pictures.where(viewed_at: nil)
 
     if not_viewed.present?
       json_response(not_viewed.first, :created)
     else
       user = User.all_except(current_user, photo.user)
       if user
-        not_viewed = user.pictures - current_user.viewed_pictures
+        not_viewed = user.pictures.where(viewed_at: nil)
         if not_viewed.present?
           json_response(not_viewed.first, :created)
         else

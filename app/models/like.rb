@@ -5,7 +5,7 @@ class Like < ApplicationRecord
   after_create :viewed_photo_check_conversation
 
   def viewed_photo_check_conversation
-    ViewedPhoto.create(user_id: user.id, picture_id: picture.id)
+    picture.update_attribute(:viewed_at, Time.now)
     if self.like_object
       con = Conversation.between(user.id, picture.user.id)
       Conversation.create(sender: user, recipient: picture.user) unless con.present?

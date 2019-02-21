@@ -7,8 +7,6 @@ class User < ApplicationRecord
   has_many :liked_pictures, :through => :likes, :source => :picture
   has_many :votes
   has_many :voted_pictures, :through => :votes, :source => :picture
-  has_many :viewed_photos
-  has_many :viewed_pictures, :through => :viewed_photos, :source => :picture
 
   def liked
     likes.where(like_object: true)
