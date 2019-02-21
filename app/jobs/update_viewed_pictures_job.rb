@@ -7,7 +7,7 @@ class UpdateViewedPicturesJob < ApplicationJob
       time = Time.now
       hours = (time - photo.created_at) / 1.hour
       if hours >= 6
-        photo.update_attribute(viewed_at: nil)
+        photo.destroy
       end
     end
   end

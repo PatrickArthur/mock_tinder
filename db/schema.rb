@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_010225) do
+ActiveRecord::Schema.define(version: 2019_02_19_160113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_010225) do
     t.string "file"
     t.text "description"
     t.bigint "user_id"
-    t.datetime "viewed_at"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
@@ -64,6 +63,15 @@ ActiveRecord::Schema.define(version: 2019_02_18_010225) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "viewed_photos", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "picture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_viewed_photos_on_picture_id"
+    t.index ["user_id"], name: "index_viewed_photos_on_user_id"
+  end
+
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "picture_id"
@@ -74,4 +82,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_010225) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "viewed_photos", "pictures"
+  add_foreign_key "viewed_photos", "users"
 end

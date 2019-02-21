@@ -5,6 +5,6 @@ class Vote < ApplicationRecord
   after_create :viewed_photo
 
   def viewed_photo
-    picture.update_attribute(:viewed_at, Time.now)
+    ViewedPhoto.create(user_id: user.id, picture_id: picture.id)
   end
 end
