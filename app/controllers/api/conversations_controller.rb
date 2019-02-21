@@ -10,6 +10,8 @@ module Api
     def show
       @conversation = Conversation.find(params[:id])
       if @conversation.present?
+        last_message = @conversation.messages.last
+        last_message.update_attribute(:read, true)
         json_response(@conversation.find_messages, :created)
       else
         json_response("no active conversations", :not_found)
