@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import AjaxHelper from './AjaxHelper';
+import AjaxHelper from './shared/AjaxHelper'
 
 class EditUser extends React.Component {
 

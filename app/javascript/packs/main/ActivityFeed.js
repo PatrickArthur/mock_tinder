@@ -1,5 +1,6 @@
 import React from 'react'
-import AjaxHelper from './AjaxHelper';
+import AjaxHelper from './shared/AjaxHelper'
+import DateFormat from './shared/DateFormat'
 
 class ActivityFeed extends React.Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class ActivityFeed extends React.Component {
                       <tr>
                         <td><img src={item.picture.file.url} width="50" height="50"/></td>
                         <td>{item.email}</td>
-                        <td>{item.time}</td>
+                        <td>{DateFormat(item.time)}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import AjaxHelper from './AjaxHelper';
+import AjaxHelper from './shared/AjaxHelper'
+import DateFormat from './shared/DateFormat'
 
 class ConversationShow extends React.Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class ConversationShow extends React.Component {
               :
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   {conversation.messages.map(message => (
-                    <p>{message.user}: {message.body} {message.time}</p>
+                    <p>{message.user}: {message.body} {DateFormat(message.time)}</p>
                   ))}
                 </div>
               }

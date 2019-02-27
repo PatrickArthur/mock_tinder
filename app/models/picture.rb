@@ -10,9 +10,7 @@ class Picture < ApplicationRecord
   validates :file, presence: true
 
   def self.get_picture(user)
-    pictures = where.not(user_id: user.id)
-    not_viewed = pictures - user.viewed_pictures
-    not_viewed.sample
+    where.not(id: user.viewed_pictures).sample
   end
 
   def self.votes_json
@@ -22,7 +20,7 @@ class Picture < ApplicationRecord
       hash = {}
       hash[:picture] = vote.picture
       hash[:email] = vote.user.email
-      hash[:time] = vote.created_at.strftime("%m/%d/%Y at %I:%M%p")
+      hash[:time] = vote.created_at
       array << hash
     end
     array.sort_by { |hsh| hsh[:time] }
