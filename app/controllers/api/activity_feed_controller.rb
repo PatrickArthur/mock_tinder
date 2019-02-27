@@ -4,7 +4,7 @@ module Api
 
     def index
       @user = User.find(params[:user_id])
-      @voted_pics = @user.pictures.votes_json
+      @voted_pics = @user.votes_json
       if @voted_pics.first.nil? || @voted_pics.empty?
         json_response(nil, :ok)
       else

@@ -17,4 +17,10 @@ class User < ApplicationRecord
   def disliked
     likes.where(like_object: false)
   end
+
+  def votes_json
+    votes = pictures.includes(:votes).map(&:votes).flatten
+    json_data = votes.map {|vote| {picture: vote.picture, email: vote.user.email, time: vote.created_at}}
+    json_data.sort_by { |hsh| hsh[:time] }
+  end
 end

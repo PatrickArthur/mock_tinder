@@ -12,17 +12,4 @@ class Picture < ApplicationRecord
   def self.get_picture(user)
     where.not(id: user.viewed_pictures).sample
   end
-
-  def self.votes_json
-    array = []
-    votes = all.map {|x| x.votes}.flatten
-    votes.each do |vote|
-      hash = {}
-      hash[:picture] = vote.picture
-      hash[:email] = vote.user.email
-      hash[:time] = vote.created_at
-      array << hash
-    end
-    array.sort_by { |hsh| hsh[:time] }
-  end
 end
