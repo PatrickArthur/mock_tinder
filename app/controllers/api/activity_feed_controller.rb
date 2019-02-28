@@ -4,14 +4,10 @@ module Api
 
     def index
       @user = User.find(params[:user_id])
-      @voted_pics = @user.votes_json
-      if @voted_pics.first.nil? || @voted_pics.empty?
-        json_response(nil, :ok)
-      else
-        json_response(@voted_pics, :ok)
-      end
+      json_response(@user.activity_feed, :ok)
     end
   end
 end
+
 
 

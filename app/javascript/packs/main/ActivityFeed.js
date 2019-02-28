@@ -32,7 +32,7 @@ class ActivityFeed extends React.Component {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <h2>Activity Feed</h2>
             </div>
-            { feed == null ?
+            { feed.length == 0 ?
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>No Photos Voted</h4>
               </div>
@@ -49,7 +49,7 @@ class ActivityFeed extends React.Component {
                   <tbody>
                     {feed.map(item => (
                       <tr>
-                        <td><img src={item.picture.file.url} width="50" height="50"/></td>
+                        <td><img src={item.file.url} width="50" height="50"/></td>
                         <td>{item.email}</td>
                         <td>{DateFormat(item.time)}</td>
                       </tr>

@@ -10,6 +10,6 @@ class Picture < ApplicationRecord
   validates :file, presence: true
 
   def self.get_picture(user)
-    where.not(id: user.viewed_pictures).sample
+    where.not(user_id: user.id, id: user.viewed_pictures).sample
   end
 end
