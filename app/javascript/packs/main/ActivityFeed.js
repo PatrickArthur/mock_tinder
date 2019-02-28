@@ -51,7 +51,7 @@ class ActivityFeed extends React.Component {
                       <tr>
                         <td><img src={item.file.url} width="50" height="50"/></td>
                         <td>{item.email}</td>
-                        <td>{DateFormat(item.time)}</td>
+                        <td>{DateFormat(item.created_at)}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -19,6 +19,6 @@ class User < ApplicationRecord
   end
 
   def activity_feed
-    pictures.joins(:votes, :voted_users).select('pictures.file, users.email, votes.created_at')
+    pictures.joins(:voted_users).select('pictures.file, users.email, votes.created_at')
   end
 end
